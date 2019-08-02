@@ -2235,7 +2235,7 @@ JNIEXPORT jlong JNICALL Java_com_drbeef_lambda1vr_GLES3JNILib_onCreate( JNIEnv *
 			ss   = arg_dbl0("s", "supersampling", "<double>", "super sampling value (e.g. 1.0)"),
             cpu   = arg_int0("c", "cpu", "<int>", "CPU perf index 1-3 (default: 2)"),
             gpu   = arg_int0("g", "gpu", "<int>", "GPU perf index 1-3 (default: 3)"),
-            msaa   = arg_dbl0("m", "msaa", "<int>", "msaa value 1-4 (default 1)"), // Don't think this actually works
+            msaa   = arg_int0("m", "msaa", "<int>", "msaa value 1-4 (default 1)"), // FIX: int instead of double
 			end     = arg_end(20)
 	};
 
@@ -2274,9 +2274,9 @@ JNIEXPORT jlong JNICALL Java_com_drbeef_lambda1vr_GLES3JNILib_onCreate( JNIEnv *
             GPU_LEVEL = gpu->ival[0];
         }
 
-        if (msaa->count > 0 && msaa->dval[0] > 0 && msaa->dval[0] < 5)
+        if (msaa->count > 0 && msaa->ival[0] > 0 && msaa->ival[0] < 5)
         {
-            NUM_MULTI_SAMPLES = msaa->dval[0];
+            NUM_MULTI_SAMPLES = msaa->ival[0];
         }
 	}
 
